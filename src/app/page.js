@@ -9,8 +9,13 @@ import Pride from "@/components/home/pride";
 import Gallery from "@/components/home/Gallery";
 import SidingReplacement from "@/components/SidingReplacement";
 import Faq from "@/components/home/faqs";
+import { query } from "@/sanity/lib/query";
+import { client } from "@/sanity/lib/client";
 
-export default function Home() {
+export default async function Home() {
+  const data = await client.fetch(query);
+  console.log("🚀 ~ Home ~ data:", data)
+
   return (
     <>
       <Hero />
