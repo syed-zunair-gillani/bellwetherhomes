@@ -75,8 +75,8 @@ export default function ProcessTimeline() {
                 <>
                   <div className="w-1/2 flex justify-end pr-4">
                     <div className="bg-[#fffae3] relative text-[#f94f3d] rounded shadow p-5 text-left w-full max-w-sm">
-                      <h3 className="font-semibold ">{index + 1}. {step.title}</h3>
-                      {step.description && <p className="text-sm mt-2 text-gray-700">{step.description}</p>}
+                      <h3 className="font-semibold text-xl">{index + 1}. {step.title}</h3>
+                      {step.description && <p className="text-lg mt-2 text-gray-700">{step.description}</p>}
                       <div className='bg-[#fffae3] h-5 w-5 rotate-45 absolute -right-2 top-2'/>
                     </div>
                   </div>
@@ -97,8 +97,8 @@ export default function ProcessTimeline() {
                   </div>
                   <div className="w-1/2 flex justify-start pl-4">
                     <div className="bg-[#fffae3] relative text-[#f94f3d] rounded shadow p-5 text-left w-full max-w-sm">
-                      <h3 className="font-semibold">{index + 1}. {step.title}</h3>
-                      {step.description && <p className="text-sm mt-2 text-gray-700">{step.description}</p>}
+                      <h3 className="font-semibold text-xl">{index + 1}. {step.title}</h3>
+                      {step.description && <p className="text-lg mt-2 text-gray-700">{step.description}</p>}
                                             <div className='bg-[#fffae3] h-5 w-5 rotate-45 absolute -left-2 top-2'/>
 
                     </div>
@@ -111,7 +111,7 @@ export default function ProcessTimeline() {
       </div>
 
       <div className="text-center flex justify-center mt-16">
-        <button className="bg-[#fffae3] flex items-center gap-2 hover:scale-110 transition-all duration-150 text-[#f94f3d] hover:bg-orange-100 cursor-pointer px-6 py-4 rounded text-sm font-semibold shadow">
+        <button className="bg-[#fffae3] flex items-center gap-2 hover:scale-110 transition-all duration-150 text-[#f94f3d] hover:bg-orange-100 cursor-pointer px-6 py-4 rounded font-semibold shadow">
           Schedule Consultation 
           <FaLongArrowAltRight size={18} />
         </button>

@@ -20,11 +20,11 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      <Logo />
+      <Logo data={data.brands}/>
       <Multifamily />
       <Gallery />
 
-      {[1, 2, 3, 4]?.map((item, idx) => (
+      {data?.detail_cards?.map((item, idx) => (
         <SidingReplacement
           key={idx}
           imageSrc="/images/Denver-Multifamily.jpg"
@@ -39,7 +39,7 @@ export default async function Home() {
       <ConvinceSection />
       <Faq />
       <Knowledge />
-      <Pride />
+      <Pride data={data.cta}/>
       <FooterTop />
       <Footer />
     </>
