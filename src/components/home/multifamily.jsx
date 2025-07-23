@@ -1,21 +1,22 @@
 'use client';
 
+import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 import { IoPlayCircleOutline } from "react-icons/io5";
 
-function Multifamily() {
+function Multifamily({data}) {
   const [showVideo, setShowVideo] = useState(false);
-
+  const imageURL = urlFor(data.mediaImage.asset).url()
   return (
     <section className='bg-[#EF4F36] py-12 md:py-20 lg:py-24 relative px-4 text-white overflow-hidden'>
       {/* Background icon positioned to the right */}
       <div
         className="absolute right-0 top-1/2 -translate-y-1/2 h-full w-1/3 md:w-1/4 opacity-20"
         style={{
-          backgroundImage: "url('/images/bellwether-icon.svg')",
+          backgroundImage: `url(${imageURL})`,
           backgroundSize: 'contain',
           backgroundPosition: 'right center',
           backgroundRepeat: 'no-repeat'
@@ -24,7 +25,7 @@ function Multifamily() {
 
       <div className='container mx-auto px-4 md:px-6 lg:px-8 relative z-10'>
         <h2 className='text-3xl md:text-4xl lg:text-5xl font-semibold text-center text-[#FFFAE3] mb-8 md:mb-12'>
-          Multifamily Siding Replacement
+          {data?.heading}
         </h2>
 
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center'>
@@ -35,10 +36,10 @@ function Multifamily() {
             <div className='text-center lg:text-left'>
               <button>
                 <Link
-                href='/'
+                href={data?.button?.href}
                 className="bg-[#fffae3] gap-2 flex items-center justify-center hover:scale-105 transition-all duration-150 text-[#ef4f36] font-bold py-4 px-8 rounded"
               >
-                Schedule Consultation
+                {data?.button?.label}
                 <FaLongArrowAltRight size={18} />
               </Link>
               </button>
@@ -49,7 +50,7 @@ function Multifamily() {
             {!showVideo ? (
               <>
                 <Image
-                  src="/images/Multifamily-siding.jpg"
+                  src={imageURL}
                   width={800}
                   height={600}
                   alt="Multifamily siding replacement project"
@@ -67,7 +68,7 @@ function Multifamily() {
             ) : (
               <iframe
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1"
+                src={data?.videoUrl || "#"}
                 title="Multifamily Siding Replacement Video"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

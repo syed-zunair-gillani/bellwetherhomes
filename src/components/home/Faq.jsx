@@ -2,27 +2,13 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 
-function Faq() {
+function Faq({data}) {
     const [activeIndex, setActiveIndex] = useState(null);
 
     const toggleAnswer = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
     };
 
-    const questions = [
-        {
-            question: "Why does Bellwether stand out in multifamily siding replacement?",
-            answer: "Bellwether specializes in high-quality materials and precision installation for multifamily properties, ensuring durability and aesthetic appeal that lasts for decades."
-        },
-        {
-            question: "How does Bellwether ensure the durability of its sidings?",
-            answer: "We use premium, weather-resistant materials and industry-leading installation techniques, backed by comprehensive warranties and regular quality inspections."
-        },
-        {
-            question: "Can we customize the siding design with Bellwether?",
-            answer: "Absolutely! We offer a wide range of colors, textures, and material options to match your property's architectural style and your personal preferences."
-        }
-    ];
 
     return (
         <section className='bg-[#EF4F36] relative py-20 px-4'>
@@ -33,7 +19,7 @@ function Faq() {
                 </h1>
 
                 <div className="space-y-3 w-full">
-                    {questions.map((item, index) => (
+                    {data?.map((item, index) => (
                         <div
                             key={index}
                             className="cursor-pointer transition-all duration-200"

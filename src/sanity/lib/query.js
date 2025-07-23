@@ -1,5 +1,32 @@
 const { groq } = require("next-sanity");
 
+export const knowladgeQuery = groq`*[_type == "knowledgeEducationCenter"]{
+  _id,
+  title,
+  "slug": slug.current,
+  excerpt,
+  coverImage{
+    asset->{
+      _id,
+      url
+    },
+    alt
+  },
+  author->{
+    _id,
+    name,
+    image{
+      asset->{
+        url
+      }
+    }
+  },
+  content,
+  seoTitle,
+  seoDescription
+}
+`
+
 export const query = groq`*[_type == "home"][0]{
   hero_title,
   hero_sub_title_title,
@@ -70,3 +97,7 @@ export const query = groq`*[_type == "home"][0]{
   meta_description,
   meta_tags
 }`
+
+
+
+

@@ -8,8 +8,9 @@ import Slider from 'react-slick';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { urlFor } from '@/sanity/lib/image';
 
-export default function ConvinceSection() {
+export default function ConvinceSection({data}) {
   const [showVideo, setShowVideo] = useState(false);
 
   const sliderSettings = {
@@ -42,7 +43,7 @@ export default function ConvinceSection() {
               {showVideo ? (
                 <iframe
                   className="absolute inset-0 w-full h-full"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                  src={data?.videoURL || "#"}
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -51,7 +52,7 @@ export default function ConvinceSection() {
               ) : (
                 <>
                   <Image
-                    src="/images/Denver-Multifamily.jpg"
+                    src={urlFor(data?.videoImage.asset).url()}
                     alt="Modern Home"
                     fill
                     className="object-cover"
@@ -74,27 +75,22 @@ export default function ConvinceSection() {
           {/* Text Section */}
           <div className="w-full lg:w-1/2 flex flex-col justify-center">
             <p className="text-[#EF4F36] font-semibold mb-2 text-lg">
-              Still Not Convinced?
+              {data?.headingHighlight}
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1E1E1E] leading-tight mb-4">
-              More Reasons to Partner With Bellwether Exterior Designs & Renovation Experts
+              {data?.heading}
             </h2>
             <p className="text-[#333] text-base sm:text-lg leading-relaxed mb-5">
-              Our team is proud to serve our homeowners on the Front range of Colorado. We know the unique needs of our clients and deeply care about the look and durability of your home’s exterior. Our team of experts are here to guide you through the process of repairing or replacing your home’s siding and windows.
+              {data?.description}
             </p>
 
             {/* Features List */}
             <div className="grid grid-cols-1 sm:grid-cols-2">
-              {[
-                '30 - year Product Warranty | 15 ',
-                'Personalized Exterior Design ',
-                'Excellent Service & Support ',
-                '3D & HD Renderings of Your Home',
-              ].map((item, idx) => (
+              {data?.features.map((item, idx) => (
                 <div key={idx} className="flex items-center gap-3 min-h-[52px] pr-2">
                   <FaCheckCircle className="text-[#EF4F36] mt-1 text-3xl shrink-0" />
                   <p className="text-[#1E1E1E] text-base leading-relaxed">
-                    {item}
+                    {item.text}
                   </p>
                 </div>
               ))}
@@ -105,13 +101,13 @@ export default function ConvinceSection() {
 
       {/* Logo Grid for Desktop */}
       <div className="hidden sm:grid container mx-auto grid-cols-6 gap-6 mt-14 px-4 md:px-6 lg:px-8">
-        {[...Array(12)].map((_, idx) => (
+        {data?.logos?.map((_item, idx) => (
           <div
             key={idx}
             className="flex justify-center items-center flex-shrink-0 max-w-[246px] max-h-[134px] w-full h-[134px] rounded"
           >
             <img
-              src="/images/James-logo.png"
+              src={urlFor(_item.asset).url()}
               alt=""
               className="object-contain max-h-full max-w-full"
             />
@@ -122,11 +118,11 @@ export default function ConvinceSection() {
       {/* Mobile Slider */}
       <div className="sm:hidden mt-14 px-4">
         <Slider {...sliderSettings}>
-          {[...Array(12)].map((_, idx) => (
+          {data?.logos?.map((_item, idx) => (
             <div key={idx} className="px-2">
               <div className="flex justify-center items-center h-[134px]">
                 <img
-                  src="/images/James-logo.png"
+                  src={urlFor(_item.asset).url()}
                   alt=""
                   className="object-contain max-h-full max-w-full"
                 />

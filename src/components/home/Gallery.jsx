@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { RxCross2 } from "react-icons/rx";
 import ReactModal from 'react-modal';
+import { urlFor } from "@/sanity/lib/image";
 
 ReactModal.setAppElement('*');
 
@@ -45,24 +46,10 @@ const PrevArrow = ({ onClick }) => (
   </div>
 );
 
-const Gallery = () => {
+const Gallery = ({data}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const images = [
-    "/images/Denver-Multifamily.jpg",
-    "/images/hero-pic.jpg",
-    "/images/Pride.jpg",
-    "/images/Denver-Multifamily.jpg",
-    "/images/Denver-Multifamily.jpg",
-    "/images/hero-pic.jpg",
-    "/images/Pride.jpg",
-    "/images/hero-pic.jpg",
-    "/images/Pride.jpg",
-    "/images/Denver-Multifamily.jpg",
-    "/images/hero-pic.jpg",
-    "/images/Pride.jpg",
-  ];
 
   const openModal = (image) => {
     setSelectedImage(image);
@@ -102,14 +89,14 @@ const Gallery = () => {
         Recent Multifamily Siding Projects
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {images.map((image, index) => (
+        {data?.map((image, index) => (
           <div
             key={index}
             className="relative cursor-pointer group"
             onClick={() => openModal(image)}
           >
             <Image
-              src={image}
+              src={urlFor(image.asset).url()}
               alt="Gallery Image"
               width={300}
               height={200}
@@ -131,10 +118,10 @@ const Gallery = () => {
     >
       <div>
         <Slider {...settings}>
-          {images.map((image, index) => (
+          {data?.map((image, index) => (
             <div key={index} className="flex justify-center items-center">
               <Image
-                src={image}
+                src={urlFor(image.asset).url()}
                 alt="Modal Image"
                 width={800}
                 height={600}

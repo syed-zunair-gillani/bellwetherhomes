@@ -1,28 +1,9 @@
+import { urlFor } from '@/sanity/lib/image';
 import Link from 'next/link';
 import React from 'react';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 
-function Knowledge() {
-  const cards = [
-    {
-      heading: "Window Replacement Costs: 5 Key Factors That Can Impact Your Budget",
-      content: "Budget planning is often one of the toughest parts of a window replacement project. Several factors can significantly influence your budget, from the materials you...",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      alt: "Window replacement cost analysis"
-    },
-    {
-      heading: "Comparing Window Materials: Vinyl, Composite, Fiberglass, and Wood-Clad",
-      content: "The materials used in your window have a direct impact on energy efficiency, durability, and long-term maintenance. Vinyl, composite, fiberglass, and wood-clad windows each offer...",
-      image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      alt: "Different window materials comparison"
-    },
-    {
-      heading: "When to Replace Your Windows: 7 Key Signs You Shouldn't Ignore",
-      content: "Window problems aren't always obvious, which can make it difficult to know when to replace your windows. Signs like drafts, fogged glass, or warped frames...",
-      image: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      alt: "Signs you need window replacement"
-    }
-  ];
+function Knowledge({data}) {
 
   return (
     <section className='bg-[#fffae3]'>
@@ -33,15 +14,15 @@ function Knowledge() {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-        {cards.map((card, index) => (
+        {data?.map((card, index) => (
           <div 
             key={index}
             className="rounded-lg overflow-hidden  "
           >
             {/* Image Section */}
-            <div className="h-48 overflow-hidden">
+            <div className="h-52 overflow-hidden">
               <img 
-                src={card.image} 
+                src={urlFor(card.coverImage.asset).url()} 
                 alt={card.alt} 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
@@ -49,8 +30,8 @@ function Knowledge() {
 
             {/* Content Section */}
             <div className="py-6">
-              <p className="text-xl font-semibold text-[#EF4F36] mb-3">{card.heading}</p>
-              <p className="text-black font-[300] mb-4">{card.content}</p>
+              <p className="text-xl font-semibold text-[#EF4F36] mb-3">{card.title}</p>
+              <p className="text-black font-[300] mb-4">{card.excerpt}</p>
             </div>
           </div>
         ))}
