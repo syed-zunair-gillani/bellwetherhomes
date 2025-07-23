@@ -35,16 +35,11 @@ export default async function Home() {
           reverse={idx % 2 === 0}
         />
       ))}
-
       <ProcessTimeline />
       <ConvinceSection />
       <Faq />
       <Knowledge />
       <Pride />
-      <Pride />
-      <Faq />
-
-      <ProcessTimeline />
       <FooterTop />
       <Footer />
     </>
