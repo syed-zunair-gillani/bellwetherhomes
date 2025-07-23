@@ -36,9 +36,7 @@ export default function Home() {
       <Faq/>
       <Knowledge />
       <Pride />
-
       <FooterTop />
-
     </>
   );
 }

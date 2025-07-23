@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import { FaLongArrowAltRight } from 'react-icons/fa';
 
 function Knowledge() {
   const cards = [
@@ -25,7 +26,7 @@ function Knowledge() {
 
   return (
     <section className='bg-[#fffae3]'>
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <h1 className="text-3xl md:text-5xl font-bold text-[#EF4F36] mb-4">Knowledge & Education Center</h1>
       <p className="text-2xl text-black font-[600] mb-12">
         Make the best decision and get the most value for your remodeling dollar by reading our blog and becoming an educated buyer.
@@ -58,9 +59,10 @@ function Knowledge() {
       <div className="flex justify-center">
         <Link 
           href='/' 
-          className="bg-[#EF4F36] hover:bg-[#d93c24] text-white text-lg font-bold py-3 px-8 rounded-lg transition-colors duration-300 inline-flex items-center"
+          className="bg-[#EF4F36] hover:scale-105 transition-all duration-150 text-white text-lg gap-2 font-bold py-4 px-8 rounded-lg inline-flex items-center"
         >
-             Schedule Consultation →
+             Schedule Consultation 
+             <FaLongArrowAltRight size={18} />
         </Link>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import { FaLongArrowAltRight } from 'react-icons/fa';
 
 
 function Pride() {
@@ -21,13 +22,13 @@ function Pride() {
           You Take Pride In Your Home,<br /> We Take Pride In Our Work.   
         </h2>
         
-        <p className="text-2xl mb-10 max-w-2xl mx-auto font-normal leading-relaxed">
+        <p className="text-2xl mb-10 max-w-2xl mx-auto font-bold text-[#fffae3] leading-relaxed">
          Let’s Do Something Amazing Together!
         </p>
         
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link href='/' className="bg-[#EF4F36] hover:bg-[#d6452e] text-white font-bold py-3 px-8 rounded transition-colors">
-           Schedule Consultation →
+          <Link href='/' className="bg-[#EF4F36] hover:bg-[#d6452e] flex hover:scale-105 transition-all duration-150 gap-2 items-center text-white font-bold py-3 px-8 rounded">
+           Schedule Consultation  <FaLongArrowAltRight size={18} />
           </Link>
         </div>
       </div>

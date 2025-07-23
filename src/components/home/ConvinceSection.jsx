@@ -4,9 +4,32 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
 import { IoPlayCircleOutline } from 'react-icons/io5';
+import Slider from 'react-slick';
+
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export default function ConvinceSection() {
   const [showVideo, setShowVideo] = useState(false);
+
+  const sliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 640, // sm screen
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+    ],
+  };
 
   return (
     <section className="py-14 bg-[#FDF4DC]">
@@ -79,20 +102,38 @@ export default function ConvinceSection() {
           </div>
         </div>
       </div>
-      {/* logo section  */}
-      <div className="container mx-auto grid grid-cols-6 gap-6 mt-14 px-4 md:px-6 lg:px-8">
-        {[1, 2, 3, 4, 5, 5, 6, 6, 6, 6, 6, 6]?.map((item, idx) => (
+
+      {/* Logo Grid for Desktop */}
+      <div className="hidden sm:grid container mx-auto grid-cols-6 gap-6 mt-14 px-4 md:px-6 lg:px-8">
+        {[...Array(12)].map((_, idx) => (
           <div
             key={idx}
             className="flex justify-center items-center flex-shrink-0 max-w-[246px] max-h-[134px] w-full h-[134px] rounded"
           >
             <img
-              src={"/images/James-logo.png"}
-              alt={``}
+              src="/images/James-logo.png"
+              alt=""
               className="object-contain max-h-full max-w-full"
             />
           </div>
         ))}
+      </div>
+
+      {/* Mobile Slider */}
+      <div className="sm:hidden mt-14 px-4">
+        <Slider {...sliderSettings}>
+          {[...Array(12)].map((_, idx) => (
+            <div key={idx} className="px-2">
+              <div className="flex justify-center items-center h-[134px]">
+                <img
+                  src="/images/James-logo.png"
+                  alt=""
+                  className="object-contain max-h-full max-w-full"
+                />
+              </div>
+            </div>
+          ))}
+        </Slider>
       </div>
     </section>
   );
