@@ -8,6 +8,7 @@ import Sidingreplacement from "@/components/Sidingreplacement";
 import ConvinceSection from "@/components/home/ConvinceSection";
 import Knowledge from "@/components/home/Knowledge";
 import Pride from "@/components/home/pride";
+import Faq from "@/components/home/Faq";
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
 
       <Knowledge />
       <Pride/>
+      <Faq/>
 
       <ProcessTimeline />
       <FooterTop />
