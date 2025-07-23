@@ -27,7 +27,7 @@ function Pride() {
         </p>
         
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link href='/' className="bg-[#EF4F36] hover:bg-[#d6452e] flex hover:scale-105 transition-all duration-150 gap-2 items-center text-white font-bold py-3 px-8 rounded">
+          <Link href='/' className="bg-[#EF4F36] flex hover:scale-105 transition-all duration-150 gap-2 items-center text-white font-bold py-3 px-8 rounded">
            Schedule Consultation  <FaLongArrowAltRight size={18} />
           </Link>
         </div>

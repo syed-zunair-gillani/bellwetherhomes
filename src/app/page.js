@@ -1,6 +1,5 @@
 import FooterTop from "@/components/FooterTop";
 import ProcessTimeline from "@/components/ProcessSteps";
-import Image from "next/image";
 import Hero from "../components/home/hero";
 import Logo from "@/components/home/logo";
 import Multifamily from "@/components/home/multifamily";
@@ -8,7 +7,7 @@ import ConvinceSection from "@/components/home/ConvinceSection";
 import Knowledge from "@/components/home/Knowledge";
 import Pride from "@/components/home/pride";
 import Gallery from "@/components/home/Gallery";
-import SidingReplacement from "@/components/Sidingreplacement";
+import SidingReplacement from "@/components/SidingReplacement";
 import Faq from "@/components/home/faqs";
 
 export default function Home() {

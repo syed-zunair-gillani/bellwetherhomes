@@ -87,8 +87,8 @@ const FooterTop = () => {
   }
 
   return (
-    <footer className="bg-red-600 text-white py-12 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+    <footer className="bg-[#EF4F36] text-white py-12 px-4 md:px-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-8">
         {/* Company Info */}
         <div className="lg:col-span-1">
           <h3 className="font-semibold text-lg mb-4">{footerData.companyInfo.title}</h3>
@@ -104,7 +104,7 @@ const FooterTop = () => {
         </div>
 
         {/* Exterior Siding */}
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-2">
           <h3 className="font-semibold text-lg mb-4">{footerData.exteriorSiding.title}</h3>
           <ul className="space-y-2">
             {footerData.exteriorSiding.links.map((link, index) => (
