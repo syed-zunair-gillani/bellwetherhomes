@@ -28,17 +28,19 @@ const FooterTop = () => {
         { text: 'Wood Siding', href: '/wood-siding' },
         { text: 'Cedar Shake', href: '/cedar-shake' },
         { text: 'Composite Siding', href: '/composite-siding' },
+        {
+          subLinks: [
+            { text: 'Cottage Lap/Dutch', href: '/cottage-lap-siding' },
+            { text: 'Shingle/Shake', href: '/shingle-shake' },
+            { text: 'Nickel Gap/Ship', href: '/nickel-gap-siding' }
+          ]
+        },
         { text: 'Natural Wood Siding', href: '/natural-wood-siding' },
         { text: 'Specialty Wood Siding', href: '/specialty-wood-siding' },
         { text: 'Board & Batten Siding', href: '/board-and-batten' },
         { text: 'Cottage Lap/Dutch Lap Siding', href: '/cottage-lap-siding' },
         { text: 'Shingle/Shake', href: '/shingle-shake' },
-        { text: 'Nickel Gap/Ship Lap', href: '/nickel-gap-siding' }
-      ]
-    },
-    fiberCementSiding: {
-      title: 'Fiber Cement Siding',
-      links: [
+        { text: 'Nickel Gap/Ship Lap', href: '/nickel-gap-siding' },
         { text: 'Siding Panels', href: '/siding-panels' },
         { text: 'Woodtone Siding', href: '/woodtone-siding' },
         { text: 'Vinyl Siding', href: '/vinyl-siding' },
@@ -58,6 +60,13 @@ const FooterTop = () => {
         { text: 'Wood Windows', href: '/wood-windows' },
         { text: 'Fiberglass Windows', href: '/fiberglass-windows' },
         { text: 'Vinyl Windows', href: '/vinyl-windows' },
+        {
+          subLinks: [
+            { text: 'Cottage Lap/Dutch', href: '/cottage-lap-siding' },
+            { text: 'Shingle/Shake', href: '/shingle-shake' },
+            { text: 'Nickel Gap/Ship', href: '/nickel-gap-siding' }
+          ]
+        },
         { text: 'Window Brands', href: '/window-brands' },
         { text: 'Pella Platinum Certified Contractor', href: '/pella-certified' }
       ]
@@ -87,59 +96,100 @@ const FooterTop = () => {
   }
 
   return (
-    <footer className="bg-red-600 text-white py-12 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+    <footer className="bg-[#EF4F36] text-white py-12 px-4 md:px-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-8">
         {/* Company Info */}
         <div className="lg:col-span-1">
-          <h3 className="font-semibold text-lg mb-4">{footerData.companyInfo.title}</h3>
-          <ul className="space-y-2">
+          <h3 className="font-bold text-lg mb-7 border-b pb-5">{footerData.companyInfo.title}</h3>
+          <ul className="space-y-1">
             {footerData.companyInfo.links.map((link, index) => (
               <li key={index}>
-                <Link href={link.href} className="hover:underline">
+                <Link href={link.href || "#"} className="hover:text-gray-300 text-[#FFFAE3]">
                   {link.text}
                 </Link>
+                <ul>
+                  {
+                    link?.subLinks?.map((item, idx) => (
+                      <li key={idx} className="!list-disc list-inside">
+                        <Link href={item.href || "#"} className="hover:text-gray-300 list-disc text-[#FFFAE3]">
+                          {item.text}
+                        </Link>
+                      </li>
+                    ))
+                  }
+                </ul>
               </li>
             ))}
           </ul>
         </div>
 
         {/* Exterior Siding */}
-        <div className="lg:col-span-1">
-          <h3 className="font-semibold text-lg mb-4">{footerData.exteriorSiding.title}</h3>
-          <ul className="space-y-2">
-            {footerData.exteriorSiding.links.map((link, index) => (
-              <li key={index}>
-                <Link href={link.href} className="hover:underline">
-                  {link.text}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <div className="lg:col-span-2">
+          <h3 className="font-bold text-lg mb-7 border-b pb-5">{footerData.exteriorSiding.title}</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5">
+            {/* First Half */}
+            <ul className="space-y-1">
+              {footerData.exteriorSiding.links.slice(0, Math.ceil(footerData.exteriorSiding.links.length / 2)).map((link, index) => (
+                <li key={index}>
+                  <Link href={link.href || "#"} className="hover:text-gray-300 text-[#FFFAE3]">
+                    {link.text}
+                  </Link>
+                  <ul>
+                    {link?.subLinks?.map((item, idx) => (
+                      <li key={idx} className="!list-disc list-inside">
+                        <Link href={item.href || "#"} className="hover:text-gray-300 text-[#FFFAE3]">
+                          {item.text}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+
+            {/* Second Half */}
+            <ul className="space-y-1">
+              {footerData.exteriorSiding.links.slice(Math.ceil(footerData.exteriorSiding.links.length / 2)).map((link, index) => (
+                <li key={index}>
+                  <Link href={link.href || "#"} className="hover:text-gray-300 text-[#FFFAE3]">
+                    {link.text}
+                  </Link>
+                  <ul>
+                    {link?.subLinks?.map((item, idx) => (
+                      <li key={idx} className="!list-disc list-inside">
+                        <Link href={item.href || "#"} className="hover:text-gray-300 text-[#FFFAE3]">
+                          {item.text}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        {/* Fiber Cement Siding */}
-        <div className="lg:col-span-1">
-          <h3 className="font-semibold text-lg mb-4">{footerData.fiberCementSiding.title}</h3>
-          <ul className="space-y-2">
-            {footerData.fiberCementSiding.links.map((link, index) => (
-              <li key={index}>
-                <Link href={link.href} className="hover:underline">
-                  {link.text}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
 
         {/* Windows */}
         <div className="lg:col-span-1">
-          <h3 className="font-semibold text-lg mb-4">{footerData.windows.title}</h3>
-          <ul className="space-y-2">
+          <h3 className="font-bold text-lg mb-7 border-b pb-5">{footerData.windows.title}</h3>
+          <ul className="space-y-1">
             {footerData.windows.links.map((link, index) => (
               <li key={index}>
-                <Link href={link.href} className="hover:underline">
+                <Link href={link.href || "#"} className="hover:text-gray-300 text-[#FFFAE3]">
                   {link.text}
                 </Link>
+                <ul>
+                  {
+                    link?.subLinks?.map((item, idx) => (
+                      <li key={idx} className="!list-disc list-inside">
+                        <Link href={item.href || "#"} className="hover:text-gray-300 list-disc text-[#FFFAE3]">
+                          {item.text}
+                        </Link>
+                      </li>
+                    ))
+                  }
+                </ul>
               </li>
             ))}
           </ul>
@@ -147,31 +197,84 @@ const FooterTop = () => {
 
         {/* Entry Doors */}
         <div className="lg:col-span-1">
-          <h3 className="font-semibold text-lg mb-4">{footerData.entryDoors.title}</h3>
-          <ul className="space-y-2">
+          <h3 className="font-bold text-lg mb-7 border-b pb-5">{footerData.entryDoors.title}</h3>
+          <ul className="space-y-1">
             {footerData.entryDoors.links.map((link, index) => (
               <li key={index}>
-                <Link href={link.href} className="hover:underline">
+                <Link href={link.href || "#"} className="hover:text-gray-300 text-[#FFFAE3]">
                   {link.text}
                 </Link>
+                <ul>
+                  {
+                    link?.subLinks?.map((item, idx) => (
+                      <li key={idx} className="!list-disc list-inside">
+                        <Link href={item.href || "#"} className="hover:text-gray-300 list-disc text-[#FFFAE3]">
+                          {item.text}
+                        </Link>
+                      </li>
+                    ))
+                  }
+                </ul>
               </li>
             ))}
           </ul>
         </div>
 
         {/* Service Areas */}
-        <div className="lg:col-span-1">
-          <h3 className="font-semibold text-lg mb-4">{footerData.serviceAreas.title}</h3>
-          <ul className="space-y-2">
-            {footerData.serviceAreas.areas.map((area, index) => (
-              <li key={index}>
-                <Link href={`/service-areas/${area.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="hover:underline">
-                  {area}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        {/* Service Areas */}
+        <div className="lg:col-span-2">
+          <h3 className="font-bold text-lg mb-7 border-b pb-5">{footerData.serviceAreas.title}</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5">
+            {/* First Half */}
+            <ul className="space-y-1">
+              {footerData.serviceAreas.areas.slice(0, Math.ceil(footerData.serviceAreas.areas.length / 2)).map((area, index) => (
+                <li key={index}>
+                  <Link
+                    href={`/service-areas/${area.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                    className="hover:text-gray-300 text-[#FFFAE3]"
+                  >
+                    {area}
+                  </Link>
+                  <ul>
+                    {
+                      area?.subLinks?.map((item, idx) => (
+                        <li key={idx} className="!list-disc list-inside">
+                          <Link href={item.href || "#"} className="hover:text-gray-300 list-disc text-[#FFFAE3]">
+                            {item.text}
+                          </Link>
+                        </li>
+                      ))
+                    }
+                  </ul>
+                </li>
+              ))}
+            </ul>
+
+            {/* Second Half */}
+            <ul className="space-y-1">
+              {footerData.serviceAreas.areas.slice(Math.ceil(footerData.serviceAreas.areas.length / 2)).map((area, index) => (
+                <li key={index}>
+                  <Link
+                    href={`/service-areas/${area.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                    className="hover:text-gray-300 text-[#FFFAE3]"
+                  >
+                    {area}
+                  </Link>
+                  {
+                    area?.subLinks?.map((item, idx) => (
+                      <li key={idx} className="!list-disc list-inside">
+                        <Link href={item.href || "#"} className="hover:text-gray-300 list-disc text-[#FFFAE3]">
+                          {item.text}
+                        </Link>
+                      </li>
+                    ))
+                  }
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
+
       </div>
     </footer>
   )

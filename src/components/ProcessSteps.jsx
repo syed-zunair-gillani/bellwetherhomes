@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import { FaRegClipboard, FaRegPaperPlane, FaHardHat, FaCheckCircle, FaTools, FaComments, FaSmile } from 'react-icons/fa'
+import { FaRegClipboard, FaRegPaperPlane, FaHardHat, FaCheckCircle, FaTools, FaComments, FaSmile, FaLongArrowAltRight } from 'react-icons/fa'
 
 const steps = [
   { title: 'Project Consultation', icon: <FaRegClipboard />, description: '' },
@@ -48,9 +48,9 @@ export default function ProcessTimeline() {
 
   return (
     <section className="bg-[#f94f3d] py-16 px-4 text-white" ref={containerRef}>
-      <div className="max-w-3xl mx-auto text-center mb-12">
-        <h2 className="text-3xl font-bold mb-4">Working with Us Is Easy & Stress Free</h2>
-        <p className="text-sm">
+      <div className="max-w-[1000px] mx-auto text-center mb-12">
+        <h2 className="text-3xl md:text-5xl font-semibold text-[#fffae3] mb-4">Working with Us Is Easy & Stress Free</h2>
+        <p className="text-[18px] max-w-[800px] mx-auto">
           We understand that remodeling your home can be exciting but also overwhelming. That’s why we created this
           simple process to make it easy & fun.
         </p>
@@ -74,13 +74,14 @@ export default function ProcessTimeline() {
               {index % 2 === 0 ? (
                 <>
                   <div className="w-1/2 flex justify-end pr-4">
-                    <div className="bg-white text-[#f94f3d] rounded shadow p-4 text-left w-full max-w-sm">
-                      <h3 className="font-semibold">{index + 1}. {step.title}</h3>
+                    <div className="bg-[#fffae3] relative text-[#f94f3d] rounded shadow p-5 text-left w-full max-w-sm">
+                      <h3 className="font-semibold ">{index + 1}. {step.title}</h3>
                       {step.description && <p className="text-sm mt-2 text-gray-700">{step.description}</p>}
+                      <div className='bg-[#fffae3] h-5 w-5 rotate-45 absolute -right-2 top-2'/>
                     </div>
                   </div>
                   <div className="flex flex-col items-center">
-                    <div className="bg-white text-[#f94f3d] p-2 rounded-full text-xl shadow">
+                    <div className="bg-[#fffae3] text-[#f94f3d] p-4 rounded-full text-2xl shadow">
                       {step.icon}
                     </div>
                   </div>
@@ -90,14 +91,16 @@ export default function ProcessTimeline() {
                 <>
                   <div className="w-1/2" />
                   <div className="flex flex-col items-center">
-                    <div className="bg-white text-[#f94f3d] p-2 rounded-full text-xl shadow">
+                    <div className="bg-[#fffae3] text-[#f94f3d] p-4 rounded-full text-2xl shadow">
                       {step.icon}
                     </div>
                   </div>
                   <div className="w-1/2 flex justify-start pl-4">
-                    <div className="bg-white text-[#f94f3d] rounded shadow p-4 text-left w-full max-w-sm">
+                    <div className="bg-[#fffae3] relative text-[#f94f3d] rounded shadow p-5 text-left w-full max-w-sm">
                       <h3 className="font-semibold">{index + 1}. {step.title}</h3>
                       {step.description && <p className="text-sm mt-2 text-gray-700">{step.description}</p>}
+                                            <div className='bg-[#fffae3] h-5 w-5 rotate-45 absolute -left-2 top-2'/>
+
                     </div>
                   </div>
                 </>
@@ -107,9 +110,10 @@ export default function ProcessTimeline() {
         </div>
       </div>
 
-      <div className="text-center mt-16">
-        <button className="bg-white text-[#f94f3d] hover:bg-orange-100 transition px-6 py-2 rounded text-sm font-semibold shadow">
-          Schedule Consultation →
+      <div className="text-center flex justify-center mt-16">
+        <button className="bg-[#fffae3] flex items-center gap-2 hover:scale-110 transition-all duration-150 text-[#f94f3d] hover:bg-orange-100 cursor-pointer px-6 py-4 rounded text-sm font-semibold shadow">
+          Schedule Consultation 
+          <FaLongArrowAltRight size={18} />
         </button>
       </div>
     </section>

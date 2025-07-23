@@ -1,9 +1,14 @@
 import Link from 'next/link';
 import React from 'react';
+import Header from '../header';
+import { FaLongArrowAltRight } from 'react-icons/fa';
+import { IoIosPlayCircle } from "react-icons/io";
 
 function Hero() {
   return (
-    <div 
+    <>
+    <Header/>
+    <main 
       className="hero-section  relative py-16 px-4 text-center text-white h-screen flex items-center justify-center"
       style={{
         backgroundImage: "url('/images/hero-pic.jpg')",
@@ -15,7 +20,7 @@ function Hero() {
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-black opacity-60"></div>
       
-      <div className="max-w-5xl mx-auto relative z-10 px-4">
+      <div className="max-w-5xl mx-auto relative z-10 px-4 md:mt-32">
         <h2 className="text-xl font-semibold mb-4 tracking-wider">
           MULTIFAMILY SIDING REPLACEMENT EXPERTS IN COLORADO    
         </h2>
@@ -30,15 +35,18 @@ function Hero() {
         </p>
         
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link href='/' className="bg-[#EF4F36] hover:bg-[#d6452e] text-white font-bold py-3 px-8 rounded transition-colors">
+          <Link href='/' className="bg-[#EF4F36] gap-2 flex items-center justify-center hover:scale-105 transition-all duration-150 text-white font-bold py-4 px-8 rounded">
             Schedule a Free Project Consultation
+            <FaLongArrowAltRight size={18} />
           </Link>
-          <Link href='/' className="bg-[#EF4F36] hover:bg-[#d6452e] text-white font-bold py-3 px-8 rounded transition-colors">
+          <Link href='/' className="bg-[#EF4F36] gap-2 flex items-center justify-center hover:scale-105 transition-all duration-150 text-white font-bold py-4 px-8 rounded">
             Watch Video
+            <IoIosPlayCircle size={18}/>
           </Link>
         </div>
       </div>
-    </div>
+    </main>
+    </>
   );
 }
 

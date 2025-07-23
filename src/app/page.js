@@ -1,41 +1,52 @@
 import FooterTop from "@/components/FooterTop";
 import ProcessTimeline from "@/components/ProcessSteps";
-import Image from "next/image";
 import Hero from "../components/home/hero";
 import Logo from "@/components/home/logo";
 import Multifamily from "@/components/home/multifamily";
-import Sidingreplacement from "@/components/Sidingreplacement";
 import ConvinceSection from "@/components/home/ConvinceSection";
 import Knowledge from "@/components/home/Knowledge";
 import Pride from "@/components/home/pride";
+import Gallery from "@/components/home/Gallery";
+import SidingReplacement from "@/components/SidingReplacement";
+import { query } from "@/sanity/lib/query";
+import { client } from "@/sanity/lib/client";
 import Faq from "@/components/home/Faq";
+import Footer from "@/components/footer";
 
-export default function Home() {
+export default async function Home() {
+  const data = await client.fetch(query);
+  console.log("🚀 ~ Home ~ data:", data)
+
   return (
     <>
       <Hero />
       <Logo />
       <Multifamily />
-      <Sidingreplacement />
-      <Sidingreplacement
-        imageSrc="/images/Denver-Multifamily.jpg"
-        heading="What Does Multifamily Siding Replacement Entail?"
-        body="Multifamily siding replacement is a comprehensive process focused on revamping the exterior of large-scale housing units. Initially, it involves assessing the current siding for damage, wear, or outdated designs. Following the evaluation, the old material is meticulously removed. Once the original facade is cleared, a new layer of protection, often in the form of a weather-resistant barrier, is applied. Subsequently, the new siding material is installed, ensuring uniformity and modern aesthetics across all units. Through this meticulous process, multifamily siding replacement not only enhances the property’s visual appeal but also amplifies its durability and resistance against external elements.."
-        ctaHref="/"
-        ctaLabel="Schedule Consultation →"
-        bgColor="#EF4F36"
-        textColor="white"
-        reverse={true}
-      />
-      <ConvinceSection />
+      <Gallery />
 
+      {[1, 2, 3, 4]?.map((item, idx) => (
+        <SidingReplacement
+          key={idx}
+          imageSrc="/images/Denver-Multifamily.jpg"
+          heading="What Does Multifamily Siding Replacement Entail?"
+          body="Engaging a multifamily siding contractor is crucial for optimal results in large-scale housing projects. Their expertise ensures precise installation tailored to the unique demands of multifamily residences. Such contractors are versed in sourcing the right materials for consistency and aesthetics across units, while also prioritizing safety standards. By leveraging their specialized skills, property owners can ensure both longevity and appeal for their investments."
+          ctaHref="/"
+          ctaLabel="Schedule Consultation"
+          reverse={idx % 2 === 0}
+        />
+      ))}
+
+      <ProcessTimeline />
+      <ConvinceSection />
+      <Faq />
       <Knowledge />
-      <Pride/>
-      <Faq/>
+      <Pride />
+      <Pride />
+      <Faq />
 
       <ProcessTimeline />
       <FooterTop />
-
+      <Footer />
     </>
   );
 }
